@@ -11,6 +11,15 @@ function makeAdd(v1) {
 }
 
 const add3 = makeAdd(3); //1. makeAdd를 사용할 때에 매개변수 3이 들어가게 된다.
-console.log(add3(10));
+console.log(add3(10)); //2. closure의 기능 덕에 일급함수가 담겨져 있는 add3에 
 const add7 = makeAdd(7);
 console.log(add7(10));
+
+/* lexical environment에 대해서 해당 코드로 이해하기
+1. 현재 해당 스크립트를 포함하는 하나의 큰 e.c, l.e가 있다 (makeadd : function.. , add3:undifined, add7:undifined)
+2. 함수가 호출되어지는 시점에 e.c가 생성된다. 그리고 그 안에 l.e가 생성된다. 매개변수로 3이 등록되어졌기 때문에, l.e = {v1 : 3}으로 저장 됩니다.
+3. 1에서 만들어진 l.e환경을 2에서 기억하고 있다. 체인으로 연결 됨
+4. 내부에서 함수가 만들어지는 경우에는 상위의 l.e값이 유지가 된다. add3(10) 이 호출 되어지는 경우, 해당 l.e에는 v2=10이 생성되고, 상위 l.e인 v1을 기억한다.
+5. 값이 초기화가 되어질 때 add3 add7에 해당 함수에 대한 값이 할당된다.
+6. 내부 함수에서는 다른 함수를 생성하지 않았기 때문에, 해당 함수는 실행 후 l.e가 없어진다.
+*/

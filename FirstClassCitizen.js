@@ -6,7 +6,6 @@ const add10 = function (a) {
     return 10 + b;
 };
 
-
 //1급 함수이기에 함수를 인자로 전달하는 것이 가능하다
 function apply(arr, op) {
     return arr.map(op);
@@ -25,3 +24,5 @@ const add3 = makeAdd(3);
 console.log(add3(10));
 const add7 = makeAdd(7);
 console.log(add7(10));
+
+
